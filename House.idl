@@ -1,0 +1,9 @@
+module SmartHome
+{
+  interface House
+  {
+    string turnOnLights();
+
+
+  };
+};
