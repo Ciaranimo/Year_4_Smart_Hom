@@ -66,8 +66,8 @@ public class SmartHomeClient
 
             // Attempt at getting user input to add two numbers
             /*
-            org.omg.CORBA.Object objRefAdd = rootCtx.resolve(nc);
-            Add practicalTestRef = AddHelper.narrow(objRefAdd);
+            org.omg.CORBA.Object objRefLights = rootCtx.resolve(nc);
+            Add practicalTestRef = AddHelper.narrow(objRefLights);
 
             Scanner reader = new Scanner(System.in);  // Reading from System.in
             System.out.println("Enter a number: ");
@@ -79,11 +79,13 @@ public class SmartHomeClient
             System.out.println(add);
 
             */
-            org.omg.CORBA.Object objRefAdd = rootCtx.resolve(nc);
-            House smartHomeRef = SmartHomeHelper.narrow(objRefAdd);
+            org.omg.CORBA.Object objRefLight = rootCtx.resolve(nc);
+            House smartHomeRef = HouseHelper.narrow(objRefLight);
 
-            String turnOnLights = smartHomeRef.turnOnLights();
-            System.out.println(turnOnLights);
+            String lights = smartHomeRef.turnOnLights();
+            System.out.println(lights);
+
+
 
 
             } catch (Exception e) {
