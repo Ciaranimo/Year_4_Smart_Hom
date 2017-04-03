@@ -2,18 +2,10 @@ module SmartHome
 {
   interface House
   {
-    string turnOnLights();
-    string turnOffLights();
+    boolean lights();
 
-    string turnOnHeating();
-    string turnOffHeating();
 
-    string lockDoors();
-    string unlockDoors();
 
-    string armAlarm();
-    string disarmAlarm();
-    
 
   };
 };

@@ -82,7 +82,7 @@ public class SmartHomeClient
             org.omg.CORBA.Object objRefLight = rootCtx.resolve(nc);
             House smartHomeRef = HouseHelper.narrow(objRefLight);
 
-            String lights = smartHomeRef.turnOnLights();
+            String lights = smartHomeRef.lights();
             System.out.println(lights);
 
 
