@@ -61,8 +61,8 @@ public class SmartHomeClient
             // ****** //
             //Search the Name Space for object with add method bound to it
 
-            nc[0] = new NameComponent("Context 2", "Context");
-            nc[1] = new NameComponent("Object 4", "Object");
+          //  nc[0] = new NameComponent("Context 2", "Context");
+            //nc[1] = new NameComponent("Object 4", "Object");
 
             // Attempt at getting user input to add two numbers
             /*

@@ -34,43 +34,43 @@ public class SmartHomeServer{
 			NamingContext rootCtx = NamingContextHelper.narrow(objRef);
 
 			// Add Lights context to root
-			nc[0] = new NameComponent("LightsCtx", "Context");
-			NamingContext lights = rootCtx.bind_new_context(nc);
+			nc[0] = new NameComponent("Lights Context", "Context");
+			NamingContext LightsCtx = rootCtx.bind_new_context(nc);
 			System.out.println("Lights bound to root");
 
 			// Add Heat context to root
-			nc[0] = new NameComponent("HeatCtx", "Context");
-			NamingContext heat = rootCtx.bind_new_context(nc);
+			nc[0] = new NameComponent("Heat Context", "Context");
+			NamingContext HeatCtx = rootCtx.bind_new_context(nc);
 			System.out.println("Heat bound to root");
 
 			// Add Door context to root
-			nc[0] = new NameComponent("DoorCtx", "Context");
-			NamingContext door = rootCtx.bind_new_context(nc);
+			nc[0] = new NameComponent("Door Context", "Context");
+			NamingContext DoorCtx = rootCtx.bind_new_context(nc);
 			System.out.println("Door bound to root");
 
 			// Add ALarm context to root
-			nc[0] = new NameComponent("AlarmCtx", "Context");
-			NamingContext alarm = rootCtx.bind_new_context(nc);
+			nc[0] = new NameComponent("Alarm Context", "Context");
+			NamingContext AlarmCtx = rootCtx.bind_new_context(nc);
 			System.out.println("Alarm bound to root");
 
 			//Add LightsObject object to Lights context
 			nc[0] = new NameComponent("LightObject", "Object");
-			LightsCtx.rebind(nc, smartHomeRef);
+			LightsCtx.rebind(nc, LightsCtx);
 			System.out.println("Lights Object added to Lights context");
 
 			//Add HeatObject object to Heat context
 			nc[0] = new NameComponent("HeatObject", "Object");
-			HeatCtx.rebind(nc, smartHomeRef);
+			HeatCtx.rebind(nc, HeatCtx);
 			System.out.println("Heat Object added to Heat context");
 
 			//Add DoorObject object to Doors context
 			nc[0] = new NameComponent("DoorObject", "Object");
-			DoorCtx.rebind(nc, smartHomeRef);
+			DoorCtx.rebind(nc, DoorCtx);
 			System.out.println("Door Object added to Door context");
 
 			//Add AlarmObject object to Alarm context
 			nc[0] = new NameComponent("AlarmObject", "Object");
-			AlarmCtx.rebind(nc, smartHomeRef);
+			AlarmCtx.rebind(nc, AlarmCtx);
 			System.out.println("Alarm Object added to Alarm context");
 
 

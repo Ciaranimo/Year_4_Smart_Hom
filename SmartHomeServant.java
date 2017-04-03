@@ -4,16 +4,15 @@ import java.util.*;
 class SmartHomeServant extends _HouseImplBase{
   final Scanner scanner = new Scanner(System.in);
   String statusString = "";
-  Boolean status == false;
+  Boolean status = false;
 
-    public String lights(Boolean lightSwitch){
-      Boolean status = lightswitch;
+    public String lights(){
       if(status == false){
         System.out.println("Lights are off, do you want turn them on? Y/N");
         String lightChange = scanner.nextLine();
         if(lightChange.equals("Y")){
           statusString = "Lights are on";
-          status == true;
+          status = true;
         }
         else{
           System.out.println("Lights remain off");
@@ -24,7 +23,7 @@ class SmartHomeServant extends _HouseImplBase{
         String lightChange = scanner.nextLine();
         if(lightChange.equals("Y")){
           System.out.println("Lights are now off");
-          status == false;
+          status = false;
           String statusString = "Lights are off";
         }
       }
