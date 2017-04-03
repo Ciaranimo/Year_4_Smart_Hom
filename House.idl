@@ -3,7 +3,17 @@ module SmartHome
   interface House
   {
     string turnOnLights();
+    string turnOffLights();
 
+    string turnOnHeating();
+    string turnOffHeating();
+
+    string lockDoors();
+    string unlockDoors();
+
+    string armAlarm();
+    string disarmAlarm();
+    
 
   };
 };
