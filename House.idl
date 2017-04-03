@@ -2,7 +2,9 @@ module SmartHome
 {
   interface House
   {
-    boolean lights();
+    string lights();
+
+
 
 
 
