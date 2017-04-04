@@ -4,6 +4,7 @@ import org.omg.CORBA.*;
 import SmartHome.*;
 import org.omg.CosNaming.* ;
 import org.omg.CosNaming.NamingContextPackage.*;
+import java.util.*;
 
 
 public class SmartHomeClient
@@ -86,9 +87,10 @@ public class SmartHomeClient
 
             House smartHomeRef = HouseHelper.narrow(objRefLight);
 
-            String add = smartHomeRef.lights();
+            String lights = smartHomeRef.lightsOn("jdfkdjh");
 
-            System.out.println(add);
+
+            System.out.println(lights);
 
 
             } catch (Exception e) {

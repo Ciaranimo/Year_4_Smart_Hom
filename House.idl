@@ -2,7 +2,8 @@ module SmartHome
 {
   interface House
   {
-    string lights();
+    string lightsOn(in string status);
+    string lightsOff(in string status);
 
   };
 };
