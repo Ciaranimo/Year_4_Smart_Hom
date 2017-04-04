@@ -6,7 +6,7 @@ class SmartHomeServant extends _HouseImplBase{
   String statusString = "";
   Boolean status = false;
 
-    public String lights(){
+  public String lights(){
       if(status == false){
         System.out.println("Lights are off, do you want turn them on? Y/N");
         String lightChange = scanner.nextLine();

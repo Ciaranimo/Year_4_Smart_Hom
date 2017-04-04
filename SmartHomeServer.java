@@ -34,7 +34,7 @@ public class SmartHomeServer{
 			NamingContext rootCtx = NamingContextHelper.narrow(objRef);
 
 			// Add Lights context to root
-			nc[0] = new NameComponent("Lights Context", "Context");
+			nc[0] = new NameComponent("Light Context", "Context");
 			NamingContext LightsCtx = rootCtx.bind_new_context(nc);
 			System.out.println("Lights bound to root");
 
@@ -54,25 +54,35 @@ public class SmartHomeServer{
 			System.out.println("Alarm bound to root");
 
 			//Add LightsObject object to Lights context
-			nc[0] = new NameComponent("LightObject", "Object");
+			nc[0] = new NameComponent("Light Object", "Object");
 			LightsCtx.rebind(nc, LightsCtx);
-			System.out.println("Lights Object added to Lights context");
+			System.out.println("Light Object added to Lights context");
 
 			//Add HeatObject object to Heat context
-			nc[0] = new NameComponent("HeatObject", "Object");
+			nc[0] = new NameComponent("Heat Object", "Object");
 			HeatCtx.rebind(nc, HeatCtx);
 			System.out.println("Heat Object added to Heat context");
 
 			//Add DoorObject object to Doors context
-			nc[0] = new NameComponent("DoorObject", "Object");
+			nc[0] = new NameComponent("Door Object", "Object");
 			DoorCtx.rebind(nc, DoorCtx);
 			System.out.println("Door Object added to Door context");
 
 			//Add AlarmObject object to Alarm context
-			nc[0] = new NameComponent("AlarmObject", "Object");
+			nc[0] = new NameComponent("Alarm Object", "Object");
 			AlarmCtx.rebind(nc, AlarmCtx);
 			System.out.println("Alarm Object added to Alarm context");
 
+
+			//Add Obj 4  to Context 2
+			// *** Method Bound to Object 4 *******
+			nc[0] = new NameComponent("Light Object", "Object");
+			//NameComponent path[] = {nc};
+			//Binding the name to an object that is stored in the Naming Context
+			LightsCtx.rebind(nc, LightsCtx);
+		// ADD METHOD BIND
+			LightsCtx.rebind(nc, smartHomeRef);
+			System.out.println("Object 'Light Object' added to Light Context.");
 
     // stand by for method call from client
 			orb.run();

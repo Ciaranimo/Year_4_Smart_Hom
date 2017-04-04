@@ -61,8 +61,8 @@ public class SmartHomeClient
             // ****** //
             //Search the Name Space for object with add method bound to it
 
-            nc[0] = new NameComponent("Lights Context", "Context");
-            nc[1] = new NameComponent("LightObject", "Object");
+            nc[0] = new NameComponent("Light Context", "Context");
+            nc[1] = new NameComponent("Light Object", "Object");
 
             // Attempt at getting user input to add two numbers
             /*
@@ -80,12 +80,15 @@ public class SmartHomeClient
 
             */
             org.omg.CORBA.Object objRefLight = rootCtx.resolve(nc);
+            System.out.println("PRINT LN" + objRefLight);
+
+            System.out.println(" NC " + nc);
+
             House smartHomeRef = HouseHelper.narrow(objRefLight);
 
-            String l = smartHomeRef.lights();
-            System.out.println(l);
+            String add = smartHomeRef.lights();
 
-
+            System.out.println(add);
 
 
             } catch (Exception e) {
