@@ -11,6 +11,7 @@ public class SmartHomeClient
 {
     public static NamingContextExt rootCtx;
 
+
     public static void list(NamingContext n, String indent) {
         try {
                 final int batchSize = 1;
@@ -43,6 +44,8 @@ public class SmartHomeClient
 
     public static void main(String args[])
     {
+      Scanner sc = new Scanner(System.in);
+
 	try{
             NameComponent nc[]= new NameComponent[2];
 
@@ -81,13 +84,14 @@ public class SmartHomeClient
 
             */
             org.omg.CORBA.Object objRefLight = rootCtx.resolve(nc);
-            System.out.println("PRINT LN" + objRefLight);
 
-            System.out.println(" NC " + nc);
+            System.out.println(" Welcome to Smart Home ");
+            System.out.println("Lights are available, do you want them on or off?");
+            String status = sc.nextLine();
 
             House smartHomeRef = HouseHelper.narrow(objRefLight);
 
-            String lights = smartHomeRef.lightsOn("jdfkdjh");
+            String lights = smartHomeRef.lights(status);
 
 
             System.out.println(lights);
