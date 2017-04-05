@@ -4,5 +4,11 @@ module SmartHome
   {
     string lights(in string status);
 
+    string alarm(in string status);
+
+    string door(in string status);
+
+    string heating(in string status);
+
   };
 };

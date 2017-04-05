@@ -85,7 +85,10 @@ public class SmartHomeClient
             */
             org.omg.CORBA.Object objRefLight = rootCtx.resolve(nc);
 
+            // CLIENT INPUT
             System.out.println(" Welcome to Smart Home ");
+
+            //LIGHTS
             System.out.println("Lights are available, do you want them on or off?");
             String status = sc.nextLine();
 
@@ -93,9 +96,30 @@ public class SmartHomeClient
 
             String lights = smartHomeRef.lights(status);
 
-
             System.out.println(lights);
+            // ALARM
+            System.out.println("Alarm is available, do you want it armed or disarmed?");
+            status = sc.nextLine();
 
+            String alarm = smartHomeRef.alarm(status);
+
+            System.out.println(alarm);
+
+            // DOOR
+            System.out.println("Door is available, do you want it locked or unlocked?");
+            status = sc.nextLine();
+
+            String door = smartHomeRef.door(status);
+
+            System.out.println(door);
+
+            //HEATING
+            System.out.println("Heating is available, do you want it on or off?");
+            status = sc.nextLine();
+
+            String heating = smartHomeRef.heating(status);
+
+            System.out.println(heating);
 
             } catch (Exception e) {
                 System.out.println("ERROR : " + e) ;
