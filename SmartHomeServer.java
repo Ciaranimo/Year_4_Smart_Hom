@@ -4,6 +4,7 @@ import SmartHome.*;
 import org.omg.CosNaming.* ;
 import org.omg.CosNaming.NamingContextPackage.*;
 import java.util.Properties;
+import com.google.gson.*;
 
 public class SmartHomeServer{
 
@@ -28,10 +29,13 @@ public class SmartHomeServer{
 			org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
 	   		System.out.println("Found NameService.");
 
+
 			//Next you need to convert this reference into a NamingContext reference
 			//so that you can invoke the methods of the NamingContext interface.
 			//This is achieved by using the narrow function of the helper class
 			NamingContext rootCtx = NamingContextHelper.narrow(objRef);
+
+
 
 			// Add Lights context to root
 			nc[0] = new NameComponent("Light Context", "Context");

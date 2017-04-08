@@ -1,54 +1,82 @@
 import SmartHome.*;
+import com.google.gson.*;
 
 class SmartHomeServant extends _HouseImplBase{
 
+Gson gson = new Gson();
 
   public String lights(String status){
-    String result;
-    if(status.equals("on")){
-      result = "Lights on";
+
+
+    gson = new GsonBuilder().disableHtmlEscaping().create();
+    JsonObject jobj = new Gson().fromJson(status, JsonObject.class);
+    String onOff  = jobj.get("onOff").getAsString();
+
+      String result;
+  //  String appliance = jobj.get("device").toString();
+
+    if(onOff.equals("on")){
+      result = "Message from Servant: Lights on";
       return result;
     }
     else{
-      result = "Lights off";
+      result = "Message from Servant: Lights off";
       return result;
     }
   }
 
   public String alarm(String status){
-    String result;
-    if(status.equals("armed")){
-      result = "Alarm armed";
+    gson = new GsonBuilder().disableHtmlEscaping().create();
+    JsonObject jobj = new Gson().fromJson(status, JsonObject.class);
+    String onOff  = jobj.get("onOff").getAsString();
+
+      String result;
+  //  String appliance = jobj.get("device").toString();
+
+    if(onOff.equals("armed")){
+      result = "Message from Servant: Alarm armed";
       return result;
     }
     else{
-      result = "Alarm disarmed";
+      result = "Message from Servant: Alarm disarmed";
       return result;
     }
   }
 
   public String door(String status){
-    String result;
-    if(status.equals("locked")){
-      result = "Door locked";
+    gson = new GsonBuilder().disableHtmlEscaping().create();
+    JsonObject jobj = new Gson().fromJson(status, JsonObject.class);
+    String onOff  = jobj.get("onOff").getAsString();
+
+      String result;
+  //  String appliance = jobj.get("device").toString();
+
+    if(onOff.equals("locked")){
+      result = "Message from Servant: Door locked";
       return result;
     }
     else{
-      result = "Door unlocked";
+      result = "Message from Servant: Door unlocked";
       return result;
     }
   }
 
   public String heating(String status){
-    String result;
-    if(status.equals("on")){
-      result = "Heating on";
+    gson = new GsonBuilder().disableHtmlEscaping().create();
+    JsonObject jobj = new Gson().fromJson(status, JsonObject.class);
+    String onOff  = jobj.get("onOff").getAsString();
+
+      String result;
+  //  String appliance = jobj.get("device").toString();
+
+    if(onOff.equals("on")){
+      result = "Message from Servant: Heating on";
       return result;
     }
     else{
-      result = "Heating off";
+      result = "Message from Servant: Heating off";
       return result;
     }
-  }
 
   }
+}

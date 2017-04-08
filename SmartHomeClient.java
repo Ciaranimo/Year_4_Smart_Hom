@@ -5,13 +5,12 @@ import SmartHome.*;
 import org.omg.CosNaming.* ;
 import org.omg.CosNaming.NamingContextPackage.*;
 import java.util.*;
+import com.google.gson.*;
 
 
 public class SmartHomeClient
 {
     public static NamingContextExt rootCtx;
-
-
     public static void list(NamingContext n, String indent) {
         try {
                 final int batchSize = 1;
@@ -68,21 +67,7 @@ public class SmartHomeClient
             nc[0] = new NameComponent("Light Context", "Context");
             nc[1] = new NameComponent("Light Object", "Object");
 
-            // Attempt at getting user input to add two numbers
-            /*
-            org.omg.CORBA.Object objRefLights = rootCtx.resolve(nc);
-            Add practicalTestRef = AddHelper.narrow(objRefLights);
 
-            Scanner reader = new Scanner(System.in);  // Reading from System.in
-            System.out.println("Enter a number: ");
-            int a = reader.nextInt();
-            System.out.println("Enter a number: ");
-            int b = reader.nextInt();
-
-            String add = practicalTestRef.addMethod(a, b);
-            System.out.println(add);
-
-            */
             org.omg.CORBA.Object objRefLight = rootCtx.resolve(nc);
 
             // CLIENT INPUT
@@ -92,16 +77,21 @@ public class SmartHomeClient
             System.out.println("Lights are available, do you want them on or off?");
             String status = sc.nextLine();
 
+            String lightJson = "{'onOff': '" + status +"' }";
+
+
             House smartHomeRef = HouseHelper.narrow(objRefLight);
 
-            String lights = smartHomeRef.lights(status);
+            String lights = smartHomeRef.lights(lightJson);
 
             System.out.println(lights);
             // ALARM
             System.out.println("Alarm is available, do you want it armed or disarmed?");
             status = sc.nextLine();
 
-            String alarm = smartHomeRef.alarm(status);
+            String alarmJson = "{'onOff': '" + status +"' }";
+
+            String alarm = smartHomeRef.alarm(alarmJson);
 
             System.out.println(alarm);
 
@@ -109,7 +99,9 @@ public class SmartHomeClient
             System.out.println("Door is available, do you want it locked or unlocked?");
             status = sc.nextLine();
 
-            String door = smartHomeRef.door(status);
+            String doorJson = "{'onOff': '" + status +"' }";
+
+            String door = smartHomeRef.door(doorJson);
 
             System.out.println(door);
 
@@ -117,7 +109,9 @@ public class SmartHomeClient
             System.out.println("Heating is available, do you want it on or off?");
             status = sc.nextLine();
 
-            String heating = smartHomeRef.heating(status);
+            String heatingJson = "{'onOff': '" + status +"' }";
+
+            String heating = smartHomeRef.heating(heatingJson);
 
             System.out.println(heating);
 
