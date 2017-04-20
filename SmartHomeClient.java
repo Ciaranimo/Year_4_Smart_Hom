@@ -46,81 +46,85 @@ public class SmartHomeClient
 
     public static void main(String args[])
     {
-      Scanner sc = new Scanner(System.in);
-
-	try{
-            NameComponent nc[]= new NameComponent[2];
-
-            // Set port for server
-            Properties props = new Properties(); props.put("org.omg.CORBA.ORBInitialPort", "1050");
-            ORB orb = ORB.init(args, props);
-
-	           // create and initialize the ORB
-            org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
-
-            rootCtx = NamingContextExtHelper.narrow(objRef);
-            // Call the list function to iterate through the Name Space
-
-            list(rootCtx, "---->");
-            System.out.println("Printing Done");
-
-            // ****** //
-            //Search the Name Space for object with add method bound to it
-
-            nc[0] = new NameComponent("Light Context", "Context");
-            nc[1] = new NameComponent("Light Object", "Object");
 
 
-            org.omg.CORBA.Object objRefLight = rootCtx.resolve(nc);
+      	try{
+              NameComponent nc[]= new NameComponent[2];
 
-            // CLIENT INPUT
-            System.out.println(" Welcome to Smart Home ");
+              // Set port for server
+              Properties props = new Properties(); props.put("org.omg.CORBA.ORBInitialPort", "1050");
+              ORB orb = ORB.init(args, props);
 
-            //LIGHTS
-            System.out.println("Lights are available, do you want them on or off?");
-            String status = sc.nextLine();
+               // create and initialize the ORB
+              org.omg.CORBA.Object objRef = orb.resolve_initial_references("NameService");
 
-            String lightJson = "{'onOff': '" + status +"' }";
+              rootCtx = NamingContextExtHelper.narrow(objRef);
+              // Call the list function to iterate through the Name Space
+
+              list(rootCtx, "---->");
+              System.out.println("Printing Done");
+
+              // ****** //
+              //Search the Name Space for object with add method bound to it
+
+              nc[0] = new NameComponent("Light Context", "Context");
+              nc[1] = new NameComponent("Light Object", "Object");
 
 
-            House smartHomeRef = HouseHelper.narrow(objRefLight);
+              org.omg.CORBA.Object objRefLight = rootCtx.resolve(nc);
+              String start = "";
+              do{
+              // CLIENT INPUT
+              JOptionPane.showMessageDialog(null,"Smart Home is ready", "Smart Home", JOptionPane.PLAIN_MESSAGE);
 
-            String lights = smartHomeRef.lights(lightJson);
+              //LIGHTS
+              String status = JOptionPane.showInputDialog("Lights are available, do you want them on or off?");
 
-            System.out.println(lights);
-            // ALARM
-            System.out.println("Alarm is available, do you want it armed or disarmed?");
-            status = sc.nextLine();
+              String lightJson = "{'onOff': '" + status +"' }";
 
-            String alarmJson = "{'onOff': '" + status +"' }";
+              House smartHomeRef = HouseHelper.narrow(objRefLight);
 
-            String alarm = smartHomeRef.alarm(alarmJson);
+              String lights = smartHomeRef.lights(lightJson);
 
-            System.out.println(alarm);
+              JOptionPane.showMessageDialog(null, lights, "Smart Home", JOptionPane.PLAIN_MESSAGE);
 
-            // DOOR
-            System.out.println("Door is available, do you want it locked or unlocked?");
-            status = sc.nextLine();
+              // ALARM
+              status = JOptionPane.showInputDialog("Alarm is available, do you want it armed or disarmed?");
 
-            String doorJson = "{'onOff': '" + status +"' }";
+              String alarmJson = "{'onOff': '" + status +"' }";
 
-            String door = smartHomeRef.door(doorJson);
+              String alarm = smartHomeRef.alarm(alarmJson);
 
-            System.out.println(door);
+              JOptionPane.showMessageDialog(null, alarm, "Smart Home", JOptionPane.PLAIN_MESSAGE);
 
-            //HEATING
-            System.out.println("Heating is available, do you want it on or off?");
-            status = sc.nextLine();
+              // DOOR
+              status = JOptionPane.showInputDialog("Door is available, do you want it locked or unlocked?");
 
-            String heatingJson = "{'onOff': '" + status +"' }";
+              String doorJson = "{'onOff': '" + status +"' }";
 
-            String heating = smartHomeRef.heating(heatingJson);
+              String door = smartHomeRef.door(doorJson);
 
-            System.out.println(heating);
+              JOptionPane.showMessageDialog(null, door, "Smart Home", JOptionPane.PLAIN_MESSAGE);
 
-            } catch (Exception e) {
-                System.out.println("ERROR : " + e) ;
-                e.printStackTrace(System.out);
-            }
+              //HEATING
+              status = JOptionPane.showInputDialog("Heating is available, do you want it on or off?");
+
+
+              String heatingJson = "{'onOff': '" + status +"' }";
+
+              String heating = smartHomeRef.heating(heatingJson);
+
+              JOptionPane.showMessageDialog(null, heating, "Smart Home", JOptionPane.PLAIN_MESSAGE);
+
+              start = JOptionPane.showInputDialog("Do you wish to use Smart Home again? yes / no ?");
+
+
+            }while (start.equalsIgnoreCase("yes"));
+              } catch (Exception e) {
+                  System.out.println("ERROR : " + e) ;
+                  e.printStackTrace(System.out);
+              }
+
+
 	}
 }
