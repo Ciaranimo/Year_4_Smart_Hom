@@ -6,6 +6,9 @@ import org.omg.CosNaming.* ;
 import org.omg.CosNaming.NamingContextPackage.*;
 import java.util.*;
 import com.google.gson.*;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 
 public class SmartHomeClient
