@@ -79,7 +79,7 @@ public class SmartHomeClient
 
               //LIGHTS
               String status = JOptionPane.showInputDialog("Lights are available, do you want them on or off?");
-
+              
               String lightJson = "{'onOff': '" + status +"' }";
 
               House smartHomeRef = HouseHelper.narrow(objRefLight);
@@ -108,8 +108,6 @@ public class SmartHomeClient
 
               //HEATING
               status = JOptionPane.showInputDialog("Heating is available, do you want it on or off?");
-
-
               String heatingJson = "{'onOff': '" + status +"' }";
 
               String heating = smartHomeRef.heating(heatingJson);
@@ -118,8 +116,10 @@ public class SmartHomeClient
 
               start = JOptionPane.showInputDialog("Do you wish to use Smart Home again? yes / no ?");
 
-
             }while (start.equalsIgnoreCase("yes"));
+
+              // ALL
+
               } catch (Exception e) {
                   System.out.println("ERROR : " + e) ;
                   e.printStackTrace(System.out);
